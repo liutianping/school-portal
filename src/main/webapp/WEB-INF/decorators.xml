@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+    <excludes>
+        <pattern>/easyui/*</pattern>
+        <pattern>/css/*</pattern>
+        <pattern>/images/*</pattern>
+        <pattern>/js/*</pattern>
+        <pattern>/views/*</pattern>
+        <pattern>/home/login</pattern>
+        <pattern>/login.jsp</pattern>
+        <pattern>/stock/inStock/create*</pattern>
+        <pattern>/stock/inStock/edit*</pattern>
+        <pattern>/stock/rtnPurchase/create*</pattern>
+        <pattern>/stock/rtnPurchase/edit*</pattern>
+        <pattern>/stock/outStock/create*</pattern>
+        <pattern>/stock/outStock/edit*</pattern>
+        <pattern>/stock/transfer/create*</pattern>
+        <pattern>/stock/transfer/edit*</pattern>
+    </excludes>
+    <decorator name="main" page="main.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>

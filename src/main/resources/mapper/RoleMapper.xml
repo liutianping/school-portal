@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.school.portal.dao.RoleMapper">
+
+	<sql id="columns">
+		role_id as roleId,code,role_name as roleName,status,create_time as createTime,update_time as updateTime
+	</sql>
+
+	<insert id="save" parameterType="Role" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into t_sys_role
+		(code,role_name,status,create_time,update_time)
+		values
+		(#{code},
+		#{roleName}, #{status},#{createTime},#{updateTime})
+	</insert>
+
+	<select id="getTotal" resultType="java.lang.Integer">
+		select count(1)
+		from t_sys_role
+		<include refid="findPagedynamicWhere" />
+	</select>
+
+	<select id="findByPage" resultType="Role">
+		select
+		<include refid="columns" />
+		from t_sys_role
+		<include refid="findPagedynamicWhere" />
+		<include refid="Page.sort" />
+		<include refid="Page.footer" />
+	</select>
+
+	<sql id="findPagedynamicWhere">
+		<where>
+			<if test="paramMap.roleName != null">
+				role_name = #{paramMap.roleName}
+			</if>
+		</where>
+	</sql>
+
+</mapper>

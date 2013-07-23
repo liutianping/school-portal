@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Page">
+    <sql id="header">
+    </sql>
+    <sql id="footer">
+       limit ${pageNo},${pageSize}
+    </sql>
+    
+    <sql id="sort">
+	   order by ${sort} ${order}
+	</sql>
+	
+	
+<!-- 	  <sql id="footer">
+       limit ${pageNo},${pageSize}
+    </sql>
+    
+    <sql id="sort">
+	   order by ${sort} ${order}
+	</sql> -->
+    
+    
+<!--
+    <sql id="header">
+      select * from 
+      (select t.*,rownum rn from (
+    </sql>
+    <sql id="footer">
+       ) t 
+        where rownum < ${pageSize}
+        where rn > ${pageNo}
+    </sql>
+-->
+    
+
+</mapper>
