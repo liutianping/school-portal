@@ -1,4 +1,4 @@
-/*var editIndex = undefined;
+var editIndex = undefined;
 function endEditing() {
 	if (editIndex == undefined) {
 		return true
@@ -60,6 +60,7 @@ function reject() {
 function getChanges() {
 	var rows = $j('#roleDg').datagrid('getChanges');
 	alert(rows.length + ' rows are changed!');
-}*/
+}
+
 //########################################################################### 华丽分割线 ###############################################################
 
