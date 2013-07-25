@@ -37,7 +37,7 @@ public class ResourcesController extends BaseProfileController {
 	}
 	
 	@RequestMapping(value="queryResourceList.htm",method=RequestMethod.POST)
-	public ModelAndView userList(HttpServletRequest request,@RequestParam(required=false,defaultValue="1") Integer page,
+	public ModelAndView resourceList(HttpServletRequest request,@RequestParam(required=false,defaultValue="1") Integer page,
 			@RequestParam(required=false,defaultValue="50") Integer rows,
 			@RequestParam(required=false,defaultValue="resourceId") String sort,
 			@RequestParam(required=false,defaultValue="asc") String order) {
@@ -45,6 +45,11 @@ public class ResourcesController extends BaseProfileController {
 		resourcesService.queryPage(qc);
 		ModelAndView mv = getJsonModelAndView();
 		return mv;
+	}
+	
+	@RequestMapping(value="loadParentResourceIds.htm",method=RequestMethod.POST)
+	public ModelAndView loadParentResourceIds(HttpServletRequest request) {
+		return null;
 	}
 	
 	private Map<String,Object> getParams(HttpServletRequest request) {
