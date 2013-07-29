@@ -55,8 +55,10 @@ public class RoleServiceImpl extends BaseServiceImpl implements RoleService{
 	}
 
 	@Override
-	protected BasicMapper<?, Long> getBasicMapper() {
+	public BasicMapper<?, Long> getBasicMapper() {
 		return roleMapper;
 	}
+	
+
 
 }

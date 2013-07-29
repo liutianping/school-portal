@@ -13,6 +13,16 @@
 	    update_time as updateTime,
 	    parent_id as parentId
 	</sql>
+	
+	<insert id="save" parameterType="Resource"  useGeneratedKeys="true"
+	keyProperty="resourceId">
+	    insert into t_sys_resource 
+          (resource_name,resource_url,ordered,code,status,
+           resource_type,create_time,update_time,parent_id)
+        value
+        (#{resourceName},#{resourceUrl},#{ordered},#{code},
+        #{status},#{resoucreType},#{createTime},#{updateTime},#{parentId})
+	</insert>
 
 	<select id="getTotal" resultType="java.lang.Integer">
 		select count(1)
@@ -20,7 +30,7 @@
 		<include refid="findPagedynamicWhere" />
 	</select>
 
-	<select id="findByPage" resultType="User">
+	<select id="findByPage" resultType="Resource">
 		select
 		<include refid="columns" />
 		from t_sys_resource 
@@ -28,8 +38,16 @@
 		<include refid="Page.sort" />
 		<include refid="Page.footer" />
 	</select>
+	
+	<select id="findAllParentId" resultType="java.lang.Long">
+	    select parent_id from t_sys_resource
+	</select>
 
 	<sql id="findPagedynamicWhere">
+	<choose> 
+	   <when test="paramMap.column eq all" >
+	   </when>
+	</choose>
 		<where>
 			<if test="paramMap.userName != null">
 				 resource_name = #{paramMap.resourceName}

@@ -1,22 +1,27 @@
 package com.school.portal.web.controller.system;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.school.portal.dao.ResourceMapper;
 import com.school.portal.dao.support.Page;
 import com.school.portal.service.QueryCondition;
 import com.school.portal.service.ResourcesService;
 import com.school.portal.util.TypeCaseHelperUtil;
+import com.school.portal.web.JsonReult;
 import com.school.portal.web.controller.BaseProfileController;
+import com.school.portal.web.dto.ResourceDto;
 
 @Controller
 @RequestMapping(value="/system/resource")
@@ -24,6 +29,9 @@ public class ResourcesController extends BaseProfileController {
 	
 	@Autowired
 	private ResourcesService resourcesService;
+	
+	@Autowired
+	private ResourceMapper resourceMapper;
 	
 	@RequestMapping(value="initResource.htm",method=RequestMethod.GET)
 	public String initRole() {
@@ -42,14 +50,31 @@ public class ResourcesController extends BaseProfileController {
 			@RequestParam(required=false,defaultValue="resourceId") String sort,
 			@RequestParam(required=false,defaultValue="asc") String order) {
 		QueryCondition qc = new QueryCondition(page, rows, sort, order, getParams(request));
-		resourcesService.queryPage(qc);
+		Page pager = resourcesService.queryPage(qc);
 		ModelAndView mv = getJsonModelAndView();
+		mv.addObject("rows",pager.getItems());
+		mv.addObject("total",pager.getTotalRecord());
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="addResource.htm",method=RequestMethod.POST)
+	public ModelAndView addResource(@ModelAttribute(value="resource") ResourceDto resourceDto) {
+		JsonReult jr = JsonReult.getJsonResult();
+		resourcesService.saveResource(resourceDto);
+		jr.setData("添加成功!");
+		jr.setStatus(1000);
+		ModelAndView mv = putModel(jr);
 		return mv;
 	}
 	
 	@RequestMapping(value="loadParentResourceIds.htm",method=RequestMethod.POST)
 	public ModelAndView loadParentResourceIds(HttpServletRequest request) {
-		return null;
+		List<Long> parentIds = resourceMapper.findAllParentId();
+		JsonReult jr = JsonReult.getJsonResult();
+		jr.setData(parentIds);
+		ModelAndView mv = putModel(jr);
+		return mv;
 	}
 	
 	private Map<String,Object> getParams(HttpServletRequest request) {

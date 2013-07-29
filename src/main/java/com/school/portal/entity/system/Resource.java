@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Transient;
 
+
+import com.alibaba.fastjson.annotation.JSONField;
 import com.school.portal.entity.BaseModel;
 
 /**
@@ -26,12 +29,13 @@ public class Resource implements BaseModel<Resource>,Serializable{
 	public static final Integer RESOURCES_TYPE_MUNE = 5;
 	public static final Integer RESOURCES_TYPE_BUTTON = 10;
 
+	@JSONField(serialize=false)
 	public Class<Resource> getModelClass() {
 		return Resource.class;
 	}
 	
 	/**主键**/
-	private Long recourceId;
+	private Long resourceId;
 	/**资源code**/
 	private String code;
 	/**资源名称**/
@@ -44,7 +48,7 @@ public class Resource implements BaseModel<Resource>,Serializable{
 	private Integer status = STATUS_ENABLE;
 	/**资源类型**/
 	private Integer resoucreType;
-	/**创建时间**/
+	/**创建时间**/   
 	private Date createTime;
 	/**更新时间**/
 	private Date updateTime;
@@ -53,11 +57,11 @@ public class Resource implements BaseModel<Resource>,Serializable{
 	
 	public Resource(){}
   
-	public Resource(Long recourceId, String code, String resourceName,
+	public Resource(Long resourceId, String code, String resourceName,
 			String resourceUrl, Integer status, Integer resoucreType,
 			Date createTime, Date updateTime) {
 		super();
-		this.recourceId = recourceId;
+		this.resourceId = resourceId;
 		this.code = code;
 		this.resourceName = resourceName;
 		this.resourceUrl = resourceUrl;
@@ -67,12 +71,12 @@ public class Resource implements BaseModel<Resource>,Serializable{
 		this.updateTime = updateTime;
 	}
 
-	public Long getRecourceId() {
-		return recourceId;
+	public Long getResourceId() {
+		return resourceId;
 	}
 
-	public void setRecourceId(Long recourceId) {
-		this.recourceId = recourceId;
+	public void setResourceId(Long resourceId) {
+		this.resourceId = resourceId;
 	}
 
 	public String getCode() {
@@ -132,14 +136,6 @@ public class Resource implements BaseModel<Resource>,Serializable{
 		this.resourceUrl = resourceUrl;
 	}
 
-	public Integer getResoucreType() {
-		return resoucreType;
-	}
-
-	public void setResoucreType(Integer resoucreType) {
-		this.resoucreType = resoucreType;
-	}
-
 	public Long getParentId() {
 		return parentId;
 	}
@@ -147,5 +143,16 @@ public class Resource implements BaseModel<Resource>,Serializable{
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
+
+	public Integer getResoucreType() {
+		return resoucreType;
+	}
+
+	public void setResoucreType(Integer resoucreType) {
+		this.resoucreType = resoucreType;
+	}
+	
+	
+	
 
 }

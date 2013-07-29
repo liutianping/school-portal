@@ -46,7 +46,7 @@
 						<tr>
 							<td>父资源id</td>
 							<td>
-								<select class="easyui-combobox" name="parentId" panelHeight="60" style="width:155px" id="parentId">
+								<select  class="easyui-combobox" name="parentId" panelHeight="60" style="width:155px" id="parentId">
 									<option value="5">菜单</option>
 									<option value="10">按钮</option>
 								</select>

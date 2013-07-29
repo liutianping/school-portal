@@ -33,4 +33,11 @@ public class BaseProfileController extends AbstractController implements UserDet
 		return new ModelAndView(Contants.JSON_VIEW);
 	}
 	
+	protected ModelAndView putModel(Object data) {
+		ModelAndView mv = getJsonModelAndView();
+		mv.addObject("data", data);
+		return mv;
+	}
+	
+	
 }
