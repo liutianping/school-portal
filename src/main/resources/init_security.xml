@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Roles PUBLIC "//UNKNOWN/" "unknown.dtd">
+
+<security>
+	<Roles>
+	  <Role id="" code="" roleName=""></Role>
+	</Roles>
+
+	<Users>
+	</Users>
+	
+	<resources>
+	</resources>
+
+	<Resources>
+	</Resources>
+</security>
