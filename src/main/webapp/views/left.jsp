@@ -15,7 +15,7 @@ var setting = {
 		{ id:11, pId:1, name:"用户管理", icon:"../../js/ztree/css/zTreeStyle/img/diy/2.png", target : '/system/user/queryUserList.htm'},
 		{ id:12, pId:1, name:"角色管理", icon:"../../js/ztree/css/zTreeStyle/img/diy/3.png", target : '/system/role/queryRoleList.htm'},
 		{ id:13, pId:1, name:"资源管理", icon:"../../js/ztree/css/zTreeStyle/img/diy/5.png", target : '/system/resource/queryResourceList.htm'},
-		{ id:14, pId:1, name:"权限分配", icon:"../../js/ztree/css/zTreeStyle/img/diy/5.png"},
+		{ id:14, pId:1, name:"权限分配", icon:"../../js/ztree/css/zTreeStyle/img/diy/5.png", target : '/system/permission/authPermission.htm'},
 		{ id:15, pId:1, name:"值班表", icon:"../../js/ztree/css/zTreeStyle/img/diy/5.png"},
 		{ id:16, pId:1, name:"主题切换", icon:"../../js/ztree/css/zTreeStyle/img/diy/5.png",target : '/system/user/changeTheme.htm'},
 		{ id:2, pId:0, name:"展开、折叠 自定义图标相同", open:true, icon:"../js/ztree/css/zTreeStyle/img/diy/4.png"},

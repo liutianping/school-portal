@@ -44,10 +44,6 @@
 	</select>
 
 	<sql id="findPagedynamicWhere">
-	<choose> 
-	   <when test="paramMap.column eq all" >
-	   </when>
-	</choose>
 		<where>
 			<if test="paramMap.userName != null">
 				 resource_name = #{paramMap.resourceName}
